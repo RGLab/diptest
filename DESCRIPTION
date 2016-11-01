@@ -1,5 +1,5 @@
 Package: diptest
-Version: 0.75-7
+Version: 1.75-7
 Date: 2015-06-07
 Title: Hartigan's Dip Test Statistic for Unimodality - Corrected
 Description: Compute Hartigan's dip test statistic for unimodality /
