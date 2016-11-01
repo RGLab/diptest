@@ -6,7 +6,7 @@ if(getRversion() < "2.13.0") {
    rdRDS <- function(..., package = "diptest")
     readRDS(system.file(..., package=package, mustWork=TRUE))
 
-dip.test <- function(x, simulate.p.value = FALSE, B = 2000)
+dip.test <- function(x, simulate.p.value = FALSE, B = 2000, qDiptab = rdRDS("extraData", "qDiptab.rds"))
 {
     DNAME <- deparse(substitute(x))
     x <- sort(x[complete.cases(x)])
@@ -21,8 +21,6 @@ dip.test <- function(x, simulate.p.value = FALSE, B = 2000)
 			"with simulated p-value\n\t (based on", B, "replicates)")
 	P <- mean(D <= replicate(B, dip(runif(n))))
     } else {
-	## Long "codetools-compatible" way of	data(qDiptab) :
-	qDiptab <- rdRDS("extraData", "qDiptab.rds")
 	dn <- dimnames(qDiptab)
 	max.n <- max(nn <- as.integer(dn[["n"]]))
 	P.s <- as.numeric(dn[["Pr"]])
